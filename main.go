@@ -1,9 +1,17 @@
 package main
 
-import "github.com/gin-gonic/gin"
+import (
+	"backend/models"
+
+	"github.com/gin-gonic/gin"
+)
+
+// run server with live reload
+// go run github.com/pilu/fresh
 
 func main() {
 	router := gin.Default()
+	models.Migrations()
 	router.GET("/ping", func(c *gin.Context) {
 		c.JSON(200, gin.H{
 			"message": "pong",
