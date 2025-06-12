@@ -13,7 +13,7 @@ type Category struct {
 
 type categories []Category
 
-type Recipes struct {
+type Recipe struct {
 	ID          uint      `gorm:"primaryKey" json:"id"`
 	CategoryID  uint      `gorm:"not null" json:"category_id"`
 	Category    Category  `gorm:"foreignKey:CategoryID" json:"category"`
@@ -27,5 +27,5 @@ type Recipes struct {
 
 func Migrations() {
 	db := database.Database()
-	db.AutoMigrate(&Category{}, &Recipes{})
+	db.AutoMigrate(&Category{}, &Recipe{})
 }
