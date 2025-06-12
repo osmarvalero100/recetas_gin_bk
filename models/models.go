@@ -25,7 +25,16 @@ type Recipe struct {
 	DateAdd     time.Time `json:"date_add"`
 }
 
+type Contact struct {
+	ID      uint      `gorm:"primaryKey" json:"id"`
+	Name    string    `gorm:"type:varchar(100);not null" json:"name"`
+	Email   string    `gorm:"type:varchar(100);not null" json:"email"`
+	Phone   string    `gorm:"type:varchar(15);not null" json:"phone"`
+	Message string    `gorm:"type:text;not null" json:"message"`
+	DateAdd time.Time `json:"date_add"`
+}
+
 func Migrations() {
 	db := database.Database()
-	db.AutoMigrate(&Category{}, &Recipe{})
+	db.AutoMigrate(&Category{}, &Recipe{}, &Contact{})
 }
